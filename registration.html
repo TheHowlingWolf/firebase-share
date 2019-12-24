@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modabba</title>
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-firestore.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+    <!-- Registration form -->
+    <section class="py-5">
+        <div class="row justify-content-center">
+            <div class="col-6 text-center">
+                <h4 class="mb-2">Sign Up here</h4>
+                <hr class="mb-5">
+
+
+                <div class="row justify-content-center">
+                    <div class="form-group col-sm-5 mx-2 my-3">
+                        <label for="Fname">First Name</label>
+                        <input type="text" class="form-control" id="Fname" name="Fname" placeholder="First Name">
+                    </div>
+                    <div class="form-group col-sm-5 mx-2 my-3">
+                        <label for="Lname">First Name</label>
+                        <input type="text" class="form-control" id="Lname" name="Lname" placeholder="Last Name">
+                    </div>
+                    <div class="form-group col-sm-10 px-2 py-3">
+                        <label for="Email">Email address</label>
+                        <input type="email" name="Email" class="form-control" id="Email" placeholder="name@example.com">
+                    </div>
+                    <div class="form-group col-sm-10 px-2 py-3">
+                        <label for="Password">Password</label>
+                        <input type="password" name="Password" class="form-control" id="Password"
+                            placeholder="********">
+                    </div>
+                    <div class="form-group col-sm-10 px-2 py-3">
+                        <label for="CPassword">Confirm Password</label>
+                        <input type="password" name="CPassword" class="form-control" id="CPassword"
+                            placeholder="********">
+                    </div>
+                    
+                    <div class="form-group col-sm-10 px-2 py-3">
+                        <label for="Address">Home Address</label>
+                        <input type="text" class="form-control" id="Home" name="Home" placeholder="Address">
+                    </div>
+                    <div class="form-group col-sm-10 px-2 py-3">
+                        <label for="Address">Work Address</label>
+                        <input type="text" class="form-control" id="Work" name="Work" placeholder="Address">
+                    </div>
+                    <div class="form-group col-sm-10 px-2 py-3">
+                        <label for="Address">Other Address</label>
+                        <input type="text" class="form-control" id="Other" name="Other" placeholder="Address">
+                    </div>
+                    <div class="form-group col-sm-5 mx-2 my-3">
+                        <label for="City">City</label>
+                        <input type="text" class="form-control" id="city" name="City" placeholder="City">
+                    </div>
+                    <div class="form-group col-sm-5 mx-2 my-3">
+                        <label for="Pincode">Pincode</label>
+                        <input type="number" class="form-control" id="Pincode" name="Pincode" placeholder="Pincode">
+                    </div>
+                    <div class="form-group col-sm-5 mx-2 my-3">
+                        <label for="geopoint">Geopoint</label>
+                        <input type="text" class="form-control" id="geopoint" name="geopoint" placeholder="geopoint">
+                    </div>
+                    <div class="form-group col-sm-5 mx-2 my-3">
+                        <label for="Landmark">Landmark</label>
+                        <input type="text" class="form-control" id="Landmark" name="Landmark" placeholder="Landmark">
+                    </div>
+                    <div class="form-group col-sm-5 mx-2 my-3">
+                        <label for="PrimaryNumber">Primary Number</label>
+                        <input type="text" class="form-control" id="PrimaryNumber" name="PrimaryNumber"
+                            placeholder="77xxxxx999">
+                    </div>
+                    <div class="form-group col-sm-5 mx-2 my-3">
+                        <label for="AlternateNumber">Alternate Number</label>
+                        <input type="text" class="form-control" id="AlternateNumber" name="AlternateNumber"
+                            placeholder="77xxxxx999">
+                    </div>
+                    <div class="form-group col-sm-10 px-2 py-3">
+                        <label for="Servicable">Servicable</label>
+                        <select class="form-control" id="Servicable">
+                            <option value="Servicable">Servicable</option>
+                            <option value="UnServicable">Un Servicable</option>
+                            
+                        </select>
+
+                    </div>
+
+                    <div class="col-sm-10 px-2 py-3 my-4 text-center">
+                        <h5>
+                            Subscriptions
+                        </h5>
+                        <hr>
+                    </div>
+                    <div class="form-group col-sm-5 mx-2 my-3">
+                        <label for="DateOfActivation">Date of Activation</label>
+                        <input type="date" class="form-control" id="DateofActivation" name="DateofActivation">
+                    </div>
+                    <div class="form-group col-sm-5 mx-2 my-3">
+                        <label for="SkipBalance">Skip Balance</label>
+                        <input type="number" class="form-control" id="SkipBalance" name="SkipBalance" placeholder="INR">
+                    </div>
+
+                    <div class="col-sm-10 my-4 px-2 py-3 justify-content-center">
+
+                        <label for="SubscriptionPlan" class="lead">Subscription Plan : </label>
+                        <div></div>
+                        <div class="form-check  form-check-inline" id="SubscriptionPlan">
+                            <input class="form-check-input" type="checkbox" id="Subscriptionplan1" name="P1" value="P1">
+                            <label class="form-check-label " for="P1">P1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="Subscriptionplan2" value="P2">
+                            <label class="form-check-label" for="P2">P2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="Subscriptionplan3" value="P3">
+                            <label class="form-check-label" for="P3">P3</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="Subscriptionplan4" value="P4">
+                            <label class="form-check-label" for="P4">P4</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="Subscriptionplan5" value="P5">
+                            <label class="form-check-label" for="P5">P5</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="Subscriptionplan6" value="P6">
+                            <label class="form-check-label" for="P6">P6</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="Subscriptionplan7" value="P7">
+                            <label class="form-check-label" for="P7">P7</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="Subscriptionplan8" value="P8">
+                            <label class="form-check-label" for="P8">P8</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="Subscriptionplan9" value="P9">
+                            <label class="form-check-label" for="P9">P9</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="Subscriptionplan10" value="P10">
+                            <label class="form-check-label" for="P10">P10</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="Subscriptionplan11" value="P11">
+                            <label class="form-check-label" for="P11">P11</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="Subscriptionplan12" value="P12">
+                            <label class="form-check-label" for="P12">P12</label>
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="form-group col-sm-5 mx-2">
+                        <label for="Subscriptiontype">Subscription Type</label>
+                        <select class="form-control" id="Subscriptiontype">
+                            <option value="Veg">Veg</option>
+                            <option value="NonVeg">Non-Veg</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-5 mx-2">
+                        <label for="Subscriptionstatus">Subscription Status</label>
+                        <select class="form-control" id="Subscriptionstatus">
+                            <option value="Active">Active</option>
+                            <option value="InActive">In Active</option>
+                        </select>
+                    </div>
+
+                    <button class="col-sm-4 btn btn-primary" id="submit">Submit</button>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+    <!-- Registration form End-->
+
+
+</body>
+<script defer src="./init-firebase.js"></script>
+<script>
+
+    var firebaseConfig = {
+        apiKey: "AIzaSyByyW7s5Kvs3_Ifh-QhVPWlVM3Svvjsr8A",
+        authDomain: "modabba-53905.firebaseapp.com",
+        databaseURL: "https://modabba-53905.firebaseio.com",
+        projectId: "modabba-53905",
+        storageBucket: "modabba-53905.appspot.com",
+        messagingSenderId: "798286909890",
+        appId: "1:798286909890:web:90f934ffa1c33b5e"
+    };
+
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.auth.Auth.Persistence.LOCAL;
+
+    $('#submit').click(function () {
+        const DateofActivation = $("#DateofActivation").val();
+        const Subscriptiontype = $("#Subscriptiontype").val();
+        const Subscriptionstatus = $("#Subscriptionstatus").val();
+        // const Subscriptionplan = $("#Subscriptionplan").val();
+       let  Subscriptionplan = [];
+        var i;
+        for(i=1;i<=12;i++){
+            if( $(`#Subscriptionplan${i}`).attr('checked') ===  'checked')
+            {   
+                Subscriptionplan.push($(`#Subscriptionplan${i}`).val());
+            }
+        }
+        console.log("subscrip : " + Subscriptionplan);
+        const Fname = $("#Fname").val();
+        const Lname = $("#Lname").val();
+        const Email = $("#Email").val();
+        const Password = $("#Password").val();
+        const CPassword = $("#CPassword").val();
+        const city = $("#city").val();
+        const Pincode = $("#Pincode").val();
+        var Home = $("#Home").val();
+        if(Home=== "")
+        Home = "NA";
+        var Work = $("#Work").val();
+        if(Work=== "")
+        Work = "NA";
+        var Other = $("#Other").val();
+        if(Other=== "")
+        Other = "NA";
+        const geopoint = $("#geopoint").val();
+        const Landmark = $("#Landmark").val();
+        const PrimaryNumber = $("#PrimaryNumber").val();
+        const AlternateNumber = $("#AlternateNumber").val();
+        const Servicable = $("#Servicable").val();
+        const wallet = $("#SkipBalance").val();
+        console.log(Servicable);
+        // const UnServicable = $("#UnServicable").val();
+
+        if (DateofActivation !== "" && Subscriptiontype !== "" && Subscriptionstatus !== "" &&
+            Subscriptionplan !== "" && Fname !== "" && Lname !== "" && Email !== "" && Password !== "" &&
+            CPassword !== "" && city !== "" && ( Home !== "NA" || Work !== "NA" || Other !=="NA" ) && geopoint !== "" &&
+            Landmark !== "" && AlternateNumber !== "" && PrimaryNumber !== "" && Servicable !== "" ) {
+
+            if (Password === CPassword) {
+                const result = firebase.auth().createUserWithEmailAndPassword(Email, Password);
+                result.then(function () {
+                    var log_user = firebase.auth().signInWithEmailAndPassword(Email, Password)
+                        .then(function () {
+                            var db = firebase.firestore();    
+                            //db.settings({timestampsInSnapshots: true});
+                            // console.log(firebase.auth().currentUser);
+                            // console.log(usersRef);
+                            var userData =
+                            {
+                                "registration_Date": Date.now(),
+                                "username": `${Fname} ${Lname}`,
+                                "email": Email,
+                                "password": Password,
+                                "address": {
+                                    "Home" : {
+                                    "completeAddress" : Home,
+                                    "city": city,
+                                    "geopoint":geopoint,
+                                    "landmark":Landmark,
+                                    "pincode":Pincode
+                                    }
+                                },
+                                "primaryNumber": PrimaryNumber,
+                                "alternateNumber": AlternateNumber,
+                                "servicable": Servicable,
+                                "wallet" : wallet
+
+                            };
+
+                            
+                            
+                            db.collection('users').add(userData).then(function(docRef){
+                                for(i=0;i<Subscriptionplan.length;i++){
+                                var plan = Subscriptionplan[i];
+                                console.log(Subscriptionplan[i]);  
+                                        db.collection('users').doc(docRef.id).collection('Subscriptions').add({
+                                        "date_Of_activation": DateofActivation,
+                                        "type": Subscriptiontype,
+                                        "status": Subscriptionstatus,
+                                        "plan": plan
+                                        })
+                                }
+                                window.location.href = "home.html";
+                                
+                                
+                            });
+                            console.log(userData);
+
+
+                        }).catch(function (error) {
+                            var errorCode = error.code;
+                            var errorMessage = error.message;
+
+                            console.log(errorCode);
+                            console.log(errorMessage);
+
+                            window.alert("Message:" + errorMessage);
+
+                        });
+                })
+                .catch(function (error) {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+
+                    console.log(errorCode);
+                    console.log(errorMessage);
+
+                    window.alert("Message:" + errorMessage);
+
+                });
+
+            }
+            else {
+                window.alert("Passwords Dont match");
+            }
+        }
+
+        else {
+            window.alert("Form is incomplete. Please Fill out details");
+        }
+
+
+
+
+    });
+
+
+
+</script>
+
+</html>
